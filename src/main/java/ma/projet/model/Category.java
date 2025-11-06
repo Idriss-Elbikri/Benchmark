@@ -1,5 +1,6 @@
 package ma.projet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*; // Important: utilisez jakarta.persistence, pas javax.persistence
 import java.time.Instant;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Category {
     // --- Relation ---
     // C'est le côté "One" de la relation One-to-Many
     // "mappedBy" indique que c'est l'entité 'Item' qui gère la clé étrangère (via son champ "category")
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Item> items;
 
