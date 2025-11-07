@@ -10,24 +10,34 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Table(name = "category")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Entity
+@Table(name = "category")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Category {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank @Size(max = 32)
+    @NotBlank
+    @Size(max = 32)
     @Column(unique = true, length = 32, nullable = false)
     private String code;
 
-    @NotBlank @Size(max = 128)
+    @NotBlank
+    @Size(max = 128)
     @Column(length = 128, nullable = false)
     private String name;
 
-    @JsonIgnore // évite les cycles & grosses payloads
+    // on cache la liste d'items pour éviter la boucle JSON
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Item> items = new ArrayList<>();
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt = LocalDateTime.now();
 }

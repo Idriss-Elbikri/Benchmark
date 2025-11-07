@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/benchmark_db2
+    url: jdbc:postgresql://localhost:5432/benchmark_db4
     username: postgres
     password: postgres
     hikari:
