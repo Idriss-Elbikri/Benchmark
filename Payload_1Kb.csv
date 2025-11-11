@@ -1,0 +1,1 @@
+{"name":"JMeter Item","sku":"SKU_JMeter_${__UUID}","price":99.99,"stock":10,"category":{"id":${CAT_ID}}}
