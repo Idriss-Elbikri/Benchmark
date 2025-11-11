@@ -29,6 +29,10 @@ public class Item {
     @Temporal(TemporalType.TIMESTAMP)
     private Instant updatedAt;
 
+    // --- AJOUTEZ CE CHAMP ---
+    @Column(name = "description", columnDefinition = "TEXT") // Utiliser TEXT pour un long champ
+    private String description;
+
     // --- Relation ---
     // C'est le côté "Many" de la relation
     // Le 'FetchType.LAZY' est crucial pour les performances et demandé
@@ -93,6 +97,14 @@ public class Item {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getCategory() {
