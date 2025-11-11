@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # Scrape de ton application Spring Boot (sur ta machine)
+  - job_name: 'benchd'
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ['host.docker.internal:8081']  # change 8080 si ton app écoute ailleurs
+
+  # (Optionnel mais pratique) Prometheus se scrute lui-même pour vérifier que tout marche
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
